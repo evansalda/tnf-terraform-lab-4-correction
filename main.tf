@@ -14,7 +14,7 @@ terraform {
 
 resource "aws_security_group" "lb" {
   name   = "nuumfactory-${var.environnement}-lb-sg-${var.digit}"
-  vpc_id = "vpc-0f499c2678b9734d6"
+  vpc_id = var.vpc
 
   ingress {
     from_port   = 80
@@ -37,7 +37,7 @@ resource "aws_security_group" "lb" {
 
 resource "aws_security_group" "serveur_web" {
   name   = "nuumfactory-${var.environnement}-ec2-sg-${var.digit}"
-  vpc_id = "vpc-0f499c2678b9734d6"
+  vpc_id = var.vpc
 
   ingress {
     from_port   = 22
@@ -67,7 +67,7 @@ resource "aws_security_group" "serveur_web" {
 
 resource "aws_security_group" "db" {
   name   = "nuumfactory-${var.environnement}-db-sg-${var.digit}"
-  vpc_id = "vpc-0f499c2678b9734d6"
+  vpc_id = var.vpc
 
   ingress {
     from_port       = 3306
